@@ -8,13 +8,14 @@ The Stock Price Predictor leverages machine learning techniques to analyze histo
 
 ## SAMPLES OF THE MODEL 
 
-This is machine learning model is quite good in making predictions about the closing price of the stock or crypto. You can customize it to know the all other factors of it .
+This is machine learning model is quite good in making predictions about the closing price of the stock or crypto. You can customize it to know the all other factors of the stock like opening price and many more.
 
 HERE ARE SOME SAMPLES OF THIS MODEL :   
+
 ![FB STOCK PREDICTION](https://github.com/CodeYard01/Stock-Price-predicator/blob/4a902eec6ff0a50ebf8dbac18e88cda03cd31d57/oie_HnxLJe0FzrX1.png)
--------------
+
 ![GS STOCK PREDICTION](https://github.com/CodeYard01/Stock-Price-predicator/blob/4a902eec6ff0a50ebf8dbac18e88cda03cd31d57/oie_tGSM5HDQQfVl.png)
--------------
+
 
 ## Features
 
