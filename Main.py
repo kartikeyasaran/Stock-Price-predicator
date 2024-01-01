@@ -1,23 +1,22 @@
-# github : CodeYard01
+# Github : CodeYard01
 
 #importing libraires
 import numpy as np 
 import pandas as pd 
 from matplotlib import pyplot as plt 
 from sklearn.preprocessing import MinMaxScaler
-import pandas_datareader as web
 import datetime as dt 
-
+import yfinance as yf
 from keras.models import Sequential
 from keras.layers import Dense, Dropout, LSTM
 
 #Stock Or CryptoCurrency
-stock = 'FB'
+stock = 'AAPL'
 
 start = dt.datetime(2020,1,1)
 end = dt.datetime(2023,12,29)
 
-data = web.DataReader(stock,'yahoo',start,end)
+data = yf.download(stock, start=start, end=end)
 
 #prepare data
 scaler = MinMaxScaler(feature_range=(0,1))
@@ -55,7 +54,7 @@ model.fit(x_train, y_train, epochs=25, batch_size=32)
 test_start = dt.datetime(2023,12,29)
 test_end = dt.datetime.now()
 
-test_data = web.DataReader(stock, 'yahoo', test_start, test_end)
+test_data = yf.download(stock, test_start, test_end)
 actual_prices= test_data['Close'].values
 
 total_dataset = pd.concat((data['Close'], test_data['Close']), axis=0)
@@ -86,10 +85,11 @@ plt.legend()
 plt.show()
 
 #Predict The Next Day
-real_data = [model_inputs[len(model_inputs) +1 - prediction_days:len(model_input+1), 0]]
+real_data = [model_inputs[len(model_inputs) +1 - prediction_days:len(model_inputs+1), 0]]
 real_data = np.array(real_data)
+real_data = [model_inputs[len(model_inputs) +1 - prediction_days:len(model_inputs+1), 0]]
+real_data = np.array(real_data) 
 real_data = np.reshape(real_data, (real_data.shape[0], real_data.shape[1], 1))
-
 prediction = model.predict(real_data)
 prediction = scaler.inverse_transform(prediction)
 print(f'Prediction: {prediction}')
